@@ -3,6 +3,11 @@
 from flask import Flask
 import logging, logging.config, yaml
 
+import sentry_sdk
+
+from sentry_sdk.integrations.flask import FlaskIntegration
+
+
 
 yaml.warnings({'YAMLLoadWarning': False})
 logging.config.dictConfig(yaml.load(open('logging.yaml')))
@@ -11,7 +16,12 @@ logging.config.dictConfig(yaml.load(open('logging.yaml')))
 logfile    = logging.getLogger('file')
 logconsole = logging.getLogger('console')
 
-
+sentry_sdk.init(
+    dsn="http://ab735704f6be4a42bd65f10c0c526cdf@172.31.101.189/2",
+    integrations=[
+        FlaskIntegration(),
+    ]
+)
 
 app = Flask(__name__)
 

@@ -14,7 +14,7 @@ handlers:
     class: logging.FileHandler
     level: DEBUG
     formatter: simple
-    filename: errors.log
+    filename: /var/log/flask-demo/errors.log
 loggers:
   console:
     level: DEBUG
