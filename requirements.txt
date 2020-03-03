@@ -1,2 +1,4 @@
 flask
 pyaml
+sentry-sdk
+blinker
